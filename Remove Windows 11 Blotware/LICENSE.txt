@@ -1,0 +1,30 @@
+﻿WinRefinery License Agreement
+Copyright © 2025 Jason Turner
+All Rights Reserved.
+
+This software, “WinRefinery”, is licensed, not sold.
+
+You are granted a non-exclusive, non-transferable, revocable license to use this software for personal or internal business purposes only. 
+
+You MAY NOT:
+- Sell, distribute, sublicense, lease, or rent this software.
+- Modify, reverse engineer, or repackage the software.
+- Rename or rebrand this software or create derivative works under a different name.
+- Use this software for unlawful purposes.
+
+You MAY:
+- Use the software on your personal or company-owned Windows 11 systems.
+- Share screenshots or reviews with proper attribution.
+
+Unauthorized use, reproduction, distribution, or modification of this software is strictly prohibited and constitutes a violation of copyright law.
+
+### Disclaimer of Warranty and Liability:
+
+This software is provided "AS IS", without warranty of any kind, express or implied.  
+You assume full responsibility for the installation, use, and any consequences resulting from the use of this software.
+
+In no event shall the author (ubidzz) be held liable for any direct, indirect, incidental, special, or consequential damages, including data loss or system malfunction, arising from the use or inability to use this software.
+
+Use of this software indicates your acceptance of these terms.
+
+
