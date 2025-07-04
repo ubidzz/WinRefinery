@@ -1,0 +1,1 @@
+# Remove Windows 11 Blotware
