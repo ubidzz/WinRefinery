@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows10.0.26100.0</TargetFramework>
+    <RootNamespace>WinRefinery</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+	<Version>0.20.2</Version>
+	<license>MIT</license>
+	<Copyright>Copyright (c) 2025</Copyright>
+	<Description>WinRefinery is the ultimate all-in-one toolkit designed to take back control of your Windows 11 experience. Whether you're a power user or just tired of clutter, intrusive ads, and unwanted AI features—WinRefinery gives you the tools to reshape Windows into a lean, private, and efficient system.</Description>
+	<PackageIcon>windows-crap-fixer-logo.png</PackageIcon>
+	<ApplicationIcon>Logos\windows-fixer-logo.ico</ApplicationIcon>
+	<NeutralLanguage>en-US</NeutralLanguage>
+	<AssemblyVersion>0.20.2</AssemblyVersion>
+	<FileVersion>0.20.2</FileVersion>
+	<AnalysisLevel>latest</AnalysisLevel>
+	<Title>WinRefinery</Title>
+	<SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Logos\windows-fixer-logo.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Management" Version="9.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
