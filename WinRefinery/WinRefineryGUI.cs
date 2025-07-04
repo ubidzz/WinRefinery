@@ -207,6 +207,7 @@ namespace WinRefinery
 			resources.ApplyResources(btnLicense, "btnLicense");
 			btnLicense.Name = "btnLicense";
 			btnLicense.UseVisualStyleBackColor = true;
+			btnLicense.Click += btnLicense_Click;
 			// 
 			// btnAbout
 			// 
