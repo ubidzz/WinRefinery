@@ -60,7 +60,7 @@ namespace WinRefinery
 					}
 					OutputLogHandler.AppendMessage("Got method parameters for CreateRestorePoint.", Color.Black, false);
 
-					mbo["Description"] = "Created by Windows 11 Crap Fixer";
+					mbo["Description"] = "Created by WinRefinery";
 					mbo["RestorePointType"] = 0; // APPLICATION_INSTALL
 					mbo["EventType"] = 100; // BEGIN_SYSTEM_CHANGE
 

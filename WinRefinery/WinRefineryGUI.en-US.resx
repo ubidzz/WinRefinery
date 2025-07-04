@@ -144,9 +144,6 @@
   <data name="textBox8.Size" type="System.Drawing.Size, System.Drawing">
     <value>179, 46</value>
   </data>
-  <data name="textBox8.Text" xml:space="preserve">
-    <value>WinRefinery</value>
-  </data>
   <data name="versionText.Location" type="System.Drawing.Point, System.Drawing">
     <value>295, 26</value>
   </data>
@@ -2391,8 +2388,5 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAD39wAA//8A
         AP//AADwHwAAwB8AAMAfAADABwAAwAcAAMADAADAFwAAwA8AAPAPAAD//wAA//8AAP//AAA=
 </value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Windows 11 Crap Fixer</value>
   </data>
 </root>
