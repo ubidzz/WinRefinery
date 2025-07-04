@@ -316,8 +316,35 @@
   <data name="btnRestorePoint.Text" xml:space="preserve">
     <value>Create a Windows 11 System Restore Point</value>
   </data>
+  <data name="btnLicense.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="btnLicense.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 23</value>
+  </data>
+  <data name="btnLicense.Text" xml:space="preserve">
+    <value>WinRefinery License</value>
+  </data>
+  <data name="btnAbout.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="btnAbout.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 23</value>
+  </data>
+  <data name="btnAbout.Text" xml:space="preserve">
+    <value>About WinRefinery</value>
+  </data>
+  <data name="btnDonation.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="btnDonation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 23</value>
+  </data>
+  <data name="btnDonation.Text" xml:space="preserve">
+    <value>Support WinRefinery</value>
+  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1084, 646</value>
+    <value>1084, 692</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>

@@ -266,5 +266,10 @@ namespace WinRefinery
 			
 			await RestorePoint.StartCreatingTask();
 		}
+
+		private void btnDonation_Click(object sender, EventArgs e)
+		{
+			System.Diagnostics.Process.Start(new ProcessStartInfo { FileName = "https://www.paypal.com/donate/?hosted_button_id=6SML6HZVTG6E8", UseShellExecute = true });
+		}
 	}
 }

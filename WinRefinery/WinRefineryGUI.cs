@@ -38,6 +38,9 @@ namespace WinRefinery
 		private readonly OptimizeWindows Optimize;
 		private Button btnRestorePoint;
 		private RestorePoint RestorePoint = new();
+		private Button btnLicense;
+		private Button btnAbout;
+		private Button btnDonation;
 
 		private void InitializeComponent()
 		{
@@ -59,6 +62,9 @@ namespace WinRefinery
 			logoPicture = new PictureBox();
 			btnRestore = new Button();
 			btnRestorePoint = new Button();
+			btnLicense = new Button();
+			btnAbout = new Button();
+			btnDonation = new Button();
 			panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)logoPicture).BeginInit();
 			SuspendLayout();
@@ -196,11 +202,33 @@ namespace WinRefinery
 			btnRestorePoint.UseVisualStyleBackColor = false;
 			btnRestorePoint.Click += btnRestorePoint_Click;
 			// 
+			// btnLicense
+			// 
+			resources.ApplyResources(btnLicense, "btnLicense");
+			btnLicense.Name = "btnLicense";
+			btnLicense.UseVisualStyleBackColor = true;
+			// 
+			// btnAbout
+			// 
+			resources.ApplyResources(btnAbout, "btnAbout");
+			btnAbout.Name = "btnAbout";
+			btnAbout.UseVisualStyleBackColor = true;
+			// 
+			// btnDonation
+			// 
+			resources.ApplyResources(btnDonation, "btnDonation");
+			btnDonation.Name = "btnDonation";
+			btnDonation.UseVisualStyleBackColor = true;
+			btnDonation.Click += btnDonation_Click;
+			// 
 			// WinRefineryGUI
 			// 
 			resources.ApplyResources(this, "$this");
 			AutoScaleMode = AutoScaleMode.Inherit;
 			BackColor = Color.DimGray;
+			Controls.Add(btnDonation);
+			Controls.Add(btnAbout);
+			Controls.Add(btnLicense);
 			Controls.Add(btnRestorePoint);
 			Controls.Add(btnRestore);
 			Controls.Add(logoPicture);
