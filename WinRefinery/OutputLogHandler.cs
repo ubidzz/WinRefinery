@@ -8,35 +8,50 @@ namespace WinRefinery
 {
 	internal class OutputLogHandler
 	{
-		public static WinRefineryGUI WinRefineryGUI = new();
+		private static WinRefineryGUI _gui;
 
-		public static void AppendMessage(string message, Color color, bool bold = false)
+		public static void AppendMessage(string message, Color color, bool bold)
 		{
-			if (WinRefineryGUI.logOutput == null || WinRefineryGUI.logOutput.IsDisposed) return;
+			if (_gui.logOutput == null || _gui.logOutput.IsDisposed || _gui.logOutput.Handle == IntPtr.Zero) return;
 
-			int selectionStart = WinRefineryGUI.logOutput.SelectionStart;
+			if (_gui.InvokeRequired)
+			{
+				_gui.Invoke(new Action(() =>
+				{
+					AppendMessage(message, color, bold);
+				}));
+			}
+			else
+			{
+				int selectionStart = _gui.logOutput.SelectionStart;
 
-			// Move to the end of the textbox to append the new message
-			WinRefineryGUI.logOutput.SelectionStart = WinRefineryGUI.logOutput.TextLength;
-			WinRefineryGUI.logOutput.SelectionLength = 0;
+				// Move to the end of the textbox to append the new message
+				_gui.logOutput.SelectionStart = _gui.logOutput.TextLength;
+				_gui.logOutput.SelectionLength = 0;
 
-			// Apply the color
-			WinRefineryGUI.logOutput.SelectionColor = color;
+				// Apply the color
+				_gui.logOutput.SelectionColor = color;
 
-			// Apply the bold style if requested
-			WinRefineryGUI.logOutput.SelectionFont = new Font(WinRefineryGUI.logOutput.Font, bold ? FontStyle.Bold : FontStyle.Regular);
+				// Apply the bold style if requested
+				_gui.logOutput.SelectionFont = new Font(_gui.logOutput.Font, bold ? FontStyle.Bold : FontStyle.Regular);
 
-			// Append the message
-			WinRefineryGUI.logOutput.AppendText(message + Environment.NewLine);
+				// Append the message
+				_gui.logOutput.AppendText(message + Environment.NewLine);
 
-			// Scroll to the end of the textbox
-			WinRefineryGUI.logOutput.SelectionStart = WinRefineryGUI.logOutput.TextLength;
-			WinRefineryGUI.logOutput.ScrollToCaret();
+				// Scroll to the end of the textbox
+				_gui.logOutput.SelectionStart = _gui.logOutput.TextLength;
+				_gui.logOutput.ScrollToCaret();
+			}
 		}
 
 		public static void DeleteLogsFromWindow()
 		{
-			WinRefineryGUI.logOutput.Clear();
+			_gui.logOutput.Clear();
+		}
+
+		internal static void Initialize(WinRefineryGUI winRefineryGUI)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }

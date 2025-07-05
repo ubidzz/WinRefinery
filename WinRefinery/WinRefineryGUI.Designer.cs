@@ -27,6 +27,7 @@ namespace WinRefinery
 		{
 			InitializeComponent();
 			aboutInfo = new AboutInfo();
+			OutputLogHandler.Initialize(this);
 		}
 
 		private async void btnRun_Click(object sender, EventArgs e)
@@ -262,7 +263,7 @@ namespace WinRefinery
 			appCounter.Visible = false;
 			btnRun.Visible = false;
 			btnAnalyze.Visible = false;
-			
+
 			await RestorePoint.StartCreatingTask();
 		}
 
