@@ -76,7 +76,13 @@ namespace WinRefinery
 				// AI
 				[
 					"Don't Show Copilot in Taskbar",
-					"Turn off Recall in Windows 11"
+					"Turn off Recall in Windows 11",
+					"Disable AI-powered suggestions",
+					"Disable AI-powered search",
+					"Disable AI-powered Cortana",
+					"Disable AI-powered Windows Search",
+					"Disable AI-powered Microsoft Edge",
+					"Disable AI-powered Office"
 				],
 
 				//UI
@@ -314,39 +320,62 @@ namespace WinRefinery
 
 						// Ads
 						case "Disable File Explorer Ads":
-							// Code to disable file explorer ads
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "ShowSyncProviderNotifications", 0);
 							break;
 						case "Disable Finish Setup Ads":
-							// Code to disable finish setup ads
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SubscribedContent-338388Enabled", 0);
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SubscribedContent-338389Enabled", 0);
 							break;
 						case "Disable Lock Screen Tips and Ads":
-							// Code to disable lock screen tips and ads
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "LockScreenTipsEnabled", 0);
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "RotatingLockScreenEnabled", 0);
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "RotatingLockScreenOverlayEnabled", 0);
 							break;
 						case "Disable Personalized Ads":
-							// Code to disable personalized ads
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo", "Enabled", 0);
 							break;
 						case "Disable Settings Ads":
-							// Code to disable settings ads
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SettingsPageSuggestionsEnabled", 0);
 							break;
 						case "Disable Start Menu Ads":
-							// Code to disable start menu ads
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SystemMaintenanceEnabled", 0);
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "PreInstalledAppsEnabled", 0);
 							break;
 						case "Disable Tailored Experiences":
-							// Code to disable tailored experiences
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "TailoredExperiencesWithDiagnosticDataEnabled", 0);
 							break;
-						case "Disable Gerneral Tips and Ads":
-							// Code to disable general tips and ads
+						case "Disable General Tips and Ads":
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SoftLandingEnabled", 0);
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "PreInstalledAppsEnabled", 0);
 							break;
-						case "Disable welcome Experience Ads":
-							// Code to disable welcome experience ads
+						case "Disable Welcome Experience Ads":
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "WelcomeExperienceEnabled", 0);
 							break;
 
 						// AI
+						case "Disable AI-powered suggestions":
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "AI-poweredSuggestionsEnabled", 0);
+							break;
+						case "Disable AI-powered search":
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "AI-poweredSearchEnabled", 0);
+							break;
+						case "Disable AI-powered Cortana":
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "CortanaEnabled", 0);
+							break;
+						case "Disable AI-powered Windows Search":
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "WindowsSearchEnabled", 0);
+							break;
+						case "Disable AI-powered Microsoft Edge":
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\MicrosoftEdge", "AI-poweredEdgeEnabled", 0);
+							break;
+						case "Disable AI-powered Office":
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Office", "AI-poweredOfficeEnabled", 0);
+							break;
 						case "Don't Show Copilot in Taskbar":
-							// Code to not show copilot in taskbar
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "CopilotInTaskbarEnabled", 0);
 							break;
 						case "Turn off Recall in Windows 11":
-							// Code to turn off recall in Windows 11
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "RecallEnabled", 0);
 							break;
 
 						// UI
