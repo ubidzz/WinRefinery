@@ -19,18 +19,25 @@ namespace WinRefinery
 {
 	public partial class WinRefineryGUI : Form
 	{
-		public Panel functionPanel;
-		public Label appCounter;
-		public RichTextBox logOutput;
-		private Panel backgroundBanner;
-		private TextBox processLogsText;
-		private Panel shadowPanel1;
-		private Panel shadowPanel2;
-
 		public WinRefineryGUI()
 		{
+			if (!SystemRequirement.CheckWindows())
+			{
+				this.Load += (sender, e) =>
+				{
+					this.Close();
+				};
+			}
+
+
 			InitializeComponent();
 			OutputLogHandler.Initialize(this);
+			backgroundBanner.MouseDown += GUIAppWindow_MouseDown;
+			backgroundBanner.MouseMove += GUIAppWindow_MouseMove;
+			backgroundBanner.MouseUp += GUIAppWindow_MouseUp;
+			logoPicture.MouseDown += GUIAppWindow_MouseDown;
+			logoPicture.MouseMove += GUIAppWindow_MouseMove;
+			logoPicture.MouseUp += GUIAppWindow_MouseUp;
 		}
 
 		private async void btnRun_Click(object sender, EventArgs e)
@@ -284,6 +291,11 @@ namespace WinRefinery
 		private void btnAbout_Click(object sender, EventArgs e)
 		{
 			AboutInfo.AboutWinRefinery();
+		}
+
+		private void btnCloseWindow_Click(object sender, EventArgs e)
+		{
+			this.Close();
 		}
 	}
 }
