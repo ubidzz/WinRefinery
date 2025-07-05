@@ -1,6 +1,6 @@
 # Remove Windows 11 Blotware
 
-![image](https://github.com/user-attachments/assets/0db4fc6d-d64f-4362-b089-75d1ec687d58)
+![image](https://github.com/user-attachments/assets/66946087-4394-4cfc-8144-248c8d8e36f0)
 
 Program is not ready for use and still under consideration!!!
 
