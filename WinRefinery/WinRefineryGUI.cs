@@ -21,10 +21,8 @@ namespace WinRefinery
 		}
 
 		private Button btnFixer;
-		private TextBox textBox7;
-		private TextBox textBox8;
-		private TextBox versionText;
-		private TextBox descriptionText;
+		private TextBox appTitle;
+		private TextBox windowsVersion;
 		private Panel panel1;
 		private TextBox titleBox;
 		private Button btnApps;
@@ -41,6 +39,7 @@ namespace WinRefinery
 		private Button btnLicense;
 		private Button btnAbout;
 		private Button btnDonation;
+		private AboutInfo aboutInfo;
 
 		private void InitializeComponent()
 		{
@@ -49,15 +48,16 @@ namespace WinRefinery
 			btnRun = new Button();
 			btnFixer = new Button();
 			logOutput = new RichTextBox();
-			textBox7 = new TextBox();
-			textBox8 = new TextBox();
-			versionText = new TextBox();
-			descriptionText = new TextBox();
+			appTitle = new TextBox();
+			windowsVersion = new TextBox();
 			panel1 = new Panel();
+			processLogsText = new TextBox();
 			appCounter = new Label();
 			btnAnalyze = new Button();
 			functionPanel = new Panel();
 			titleBox = new TextBox();
+			shadowPanel1 = new Panel();
+			shadowPanel2 = new Panel();
 			btnApps = new Button();
 			logoPicture = new PictureBox();
 			btnRestore = new Button();
@@ -65,6 +65,7 @@ namespace WinRefinery
 			btnLicense = new Button();
 			btnAbout = new Button();
 			btnDonation = new Button();
+			backgroundBanner = new Panel();
 			panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)logoPicture).BeginInit();
 			SuspendLayout();
@@ -79,6 +80,7 @@ namespace WinRefinery
 			// 
 			resources.ApplyResources(btnRun, "btnRun");
 			btnRun.BackColor = Color.Transparent;
+			btnRun.Cursor = Cursors.Hand;
 			btnRun.Name = "btnRun";
 			btnRun.UseVisualStyleBackColor = false;
 			btnRun.Click += btnRun_Click;
@@ -87,6 +89,7 @@ namespace WinRefinery
 			// 
 			resources.ApplyResources(btnFixer, "btnFixer");
 			btnFixer.BackColor = Color.DarkGreen;
+			btnFixer.Cursor = Cursors.Hand;
 			btnFixer.Name = "btnFixer";
 			btnFixer.UseVisualStyleBackColor = false;
 			btnFixer.Click += btnFixer_Click;
@@ -100,50 +103,47 @@ namespace WinRefinery
 			logOutput.ReadOnly = true;
 			logOutput.TabStop = false;
 			// 
-			// textBox7
+			// appTitle
 			// 
-			resources.ApplyResources(textBox7, "textBox7");
-			textBox7.BackColor = Color.FromArgb(25, 25, 25);
-			textBox7.BorderStyle = BorderStyle.None;
-			textBox7.ForeColor = SystemColors.Info;
-			textBox7.Name = "textBox7";
+			resources.ApplyResources(appTitle, "appTitle");
+			appTitle.BackColor = Color.FromArgb(25, 25, 25);
+			appTitle.BorderStyle = BorderStyle.None;
+			appTitle.ForeColor = Color.White;
+			appTitle.Name = "appTitle";
+			appTitle.ReadOnly = true;
 			// 
-			// textBox8
+			// windowsVersion
 			// 
-			resources.ApplyResources(textBox8, "textBox8");
-			textBox8.BackColor = Color.FromArgb(25, 25, 25);
-			textBox8.BorderStyle = BorderStyle.None;
-			textBox8.ForeColor = SystemColors.Info;
-			textBox8.Name = "textBox8";
-			// 
-			// versionText
-			// 
-			resources.ApplyResources(versionText, "versionText");
-			versionText.BackColor = Color.FromArgb(25, 25, 25);
-			versionText.BorderStyle = BorderStyle.None;
-			versionText.ForeColor = SystemColors.Info;
-			versionText.Name = "versionText";
-			// 
-			// descriptionText
-			// 
-			resources.ApplyResources(descriptionText, "descriptionText");
-			descriptionText.BackColor = Color.FromArgb(25, 25, 25);
-			descriptionText.BorderStyle = BorderStyle.None;
-			descriptionText.ForeColor = SystemColors.Info;
-			descriptionText.Name = "descriptionText";
+			resources.ApplyResources(windowsVersion, "windowsVersion");
+			windowsVersion.BackColor = Color.FromArgb(25, 25, 25);
+			windowsVersion.BorderStyle = BorderStyle.None;
+			windowsVersion.ForeColor = Color.White;
+			windowsVersion.Name = "windowsVersion";
+			windowsVersion.ReadOnly = true;
 			// 
 			// panel1
 			// 
 			resources.ApplyResources(panel1, "panel1");
 			panel1.BackColor = Color.White;
 			panel1.BorderStyle = BorderStyle.Fixed3D;
+			panel1.Controls.Add(processLogsText);
 			panel1.Controls.Add(appCounter);
 			panel1.Controls.Add(btnAnalyze);
 			panel1.Controls.Add(functionPanel);
 			panel1.Controls.Add(titleBox);
 			panel1.Controls.Add(logOutput);
 			panel1.Controls.Add(btnRun);
+			panel1.Controls.Add(shadowPanel1);
+			panel1.Controls.Add(shadowPanel2);
 			panel1.Name = "panel1";
+			// 
+			// processLogsText
+			// 
+			resources.ApplyResources(processLogsText, "processLogsText");
+			processLogsText.BackColor = Color.White;
+			processLogsText.ForeColor = Color.Black;
+			processLogsText.Name = "processLogsText";
+			processLogsText.ReadOnly = true;
 			// 
 			// appCounter
 			// 
@@ -154,6 +154,7 @@ namespace WinRefinery
 			// 
 			resources.ApplyResources(btnAnalyze, "btnAnalyze");
 			btnAnalyze.BackColor = Color.Transparent;
+			btnAnalyze.Cursor = Cursors.Hand;
 			btnAnalyze.Name = "btnAnalyze";
 			btnAnalyze.UseVisualStyleBackColor = false;
 			btnAnalyze.Click += btnRestore_Click;
@@ -161,20 +162,35 @@ namespace WinRefinery
 			// functionPanel
 			// 
 			resources.ApplyResources(functionPanel, "functionPanel");
-			functionPanel.BackColor = Color.White;
-			functionPanel.BorderStyle = BorderStyle.Fixed3D;
+			functionPanel.BackColor = Color.Gainsboro;
+			functionPanel.BorderStyle = BorderStyle.FixedSingle;
 			functionPanel.Name = "functionPanel";
 			// 
 			// titleBox
 			// 
 			resources.ApplyResources(titleBox, "titleBox");
+			titleBox.BackColor = Color.White;
+			titleBox.ForeColor = Color.Black;
 			titleBox.Name = "titleBox";
 			titleBox.ReadOnly = true;
+			// 
+			// shadowPanel1
+			// 
+			resources.ApplyResources(shadowPanel1, "shadowPanel1");
+			shadowPanel1.BackColor = Color.FromArgb(50, 0, 0, 0);
+			shadowPanel1.Name = "shadowPanel1";
+			// 
+			// shadowPanel2
+			// 
+			resources.ApplyResources(shadowPanel2, "shadowPanel2");
+			shadowPanel2.BackColor = Color.FromArgb(50, 0, 0, 0);
+			shadowPanel2.Name = "shadowPanel2";
 			// 
 			// btnApps
 			// 
 			resources.ApplyResources(btnApps, "btnApps");
 			btnApps.BackColor = Color.DarkGreen;
+			btnApps.Cursor = Cursors.Hand;
 			btnApps.Name = "btnApps";
 			btnApps.UseVisualStyleBackColor = false;
 			btnApps.Click += btnApps_Click;
@@ -190,6 +206,7 @@ namespace WinRefinery
 			// 
 			resources.ApplyResources(btnRestore, "btnRestore");
 			btnRestore.BackColor = Color.DarkGreen;
+			btnRestore.Cursor = Cursors.Hand;
 			btnRestore.Name = "btnRestore";
 			btnRestore.UseVisualStyleBackColor = false;
 			btnRestore.Click += btnRestore_Click;
@@ -198,6 +215,7 @@ namespace WinRefinery
 			// 
 			resources.ApplyResources(btnRestorePoint, "btnRestorePoint");
 			btnRestorePoint.BackColor = Color.DarkGreen;
+			btnRestorePoint.Cursor = Cursors.Hand;
 			btnRestorePoint.Name = "btnRestorePoint";
 			btnRestorePoint.UseVisualStyleBackColor = false;
 			btnRestorePoint.Click += btnRestorePoint_Click;
@@ -205,6 +223,7 @@ namespace WinRefinery
 			// btnLicense
 			// 
 			resources.ApplyResources(btnLicense, "btnLicense");
+			btnLicense.Cursor = Cursors.Hand;
 			btnLicense.Name = "btnLicense";
 			btnLicense.UseVisualStyleBackColor = true;
 			btnLicense.Click += btnLicense_Click;
@@ -212,15 +231,24 @@ namespace WinRefinery
 			// btnAbout
 			// 
 			resources.ApplyResources(btnAbout, "btnAbout");
+			btnAbout.Cursor = Cursors.Hand;
 			btnAbout.Name = "btnAbout";
 			btnAbout.UseVisualStyleBackColor = true;
+			btnAbout.Click += btnAbout_Click;
 			// 
 			// btnDonation
 			// 
 			resources.ApplyResources(btnDonation, "btnDonation");
+			btnDonation.Cursor = Cursors.Hand;
 			btnDonation.Name = "btnDonation";
 			btnDonation.UseVisualStyleBackColor = true;
 			btnDonation.Click += btnDonation_Click;
+			// 
+			// backgroundBanner
+			// 
+			resources.ApplyResources(backgroundBanner, "backgroundBanner");
+			backgroundBanner.BackColor = Color.FromArgb(25, 25, 25);
+			backgroundBanner.Name = "backgroundBanner";
 			// 
 			// WinRefineryGUI
 			// 
@@ -234,14 +262,13 @@ namespace WinRefinery
 			Controls.Add(btnRestore);
 			Controls.Add(logoPicture);
 			Controls.Add(btnApps);
-			Controls.Add(descriptionText);
-			Controls.Add(versionText);
-			Controls.Add(textBox8);
-			Controls.Add(textBox7);
+			Controls.Add(windowsVersion);
+			Controls.Add(appTitle);
 			Controls.Add(btnFixer);
 			Controls.Add(chkRemoveAds);
+			Controls.Add(backgroundBanner);
 			Controls.Add(panel1);
-			FormBorderStyle = FormBorderStyle.Fixed3D;
+			FormBorderStyle = FormBorderStyle.FixedSingle;
 			MaximizeBox = false;
 			Name = "WinRefineryGUI";
 			panel1.ResumeLayout(false);
