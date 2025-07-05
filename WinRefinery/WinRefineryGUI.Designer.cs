@@ -49,7 +49,7 @@ namespace WinRefinery
 				{
 					case "Run Fixer":
 						OutputLogHandler.AppendMessage($"Processing the fixer...", Color.Black, false);
-						FixerSettings.RunCheckedFixers(this);
+						FixerSettings.RunCheckedFixersAsync(this);
 						break;
 					case "Run App Uninstaller":
 						break;

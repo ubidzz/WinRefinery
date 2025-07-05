@@ -201,7 +201,7 @@ namespace WinRefinery
 			}
 		}
 
-		public static void RunCheckedFixers(WinRefineryGUI WinRefineryGUI)
+		public static async Task RunCheckedFixersAsync(WinRefineryGUI WinRefineryGUI)
 		{
 			// Get the checkboxes from the functionPanel
 			var checkboxes = WinRefineryGUI.functionPanel.Controls.OfType<CheckBox>().ToList();
@@ -252,39 +252,64 @@ namespace WinRefinery
 						// MS Edge
 						case "Disable Browser sign-in and sync services":
 							// Code to disable browser sign-in and sync services
+							await EditRegistry.SetItemProperty(@"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge", "BrowserSignin", 0);
+							await EditRegistry.SetItemProperty(@"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge", "SyncDisabled", 1);
+							await EditRegistry.SetItemProperty(@"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge", "HideFirstRunExperience", 1);
 							break;
 						case "Don't show Sponsored Links in new tabs pages":
 							// Code to not show sponsored links in new tabs pages
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\MicrosoftEdge\NewTabPage", "AllowSponsoredContent", 0);
 							break;
 						case "Disable Microsoft edge as default browser":
 							// Code to disable Microsoft Edge as default browser
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.html\UserChoice", "Progid", "");
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.htm\UserChoice", "Progid", "");
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.xhtml\UserChoice", "Progid", "");
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.pdf\UserChoice", "Progid", "");
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.shtml\UserChoice", "Progid", "");
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.xht\UserChoice", "Progid", "");
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.hta\UserChoice", "Progid", "");
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.htc\UserChoice", "Progid", "");
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.mht\UserChoice", "Progid", "");
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.mhtml\UserChoice", "Progid", "");
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.url\UserChoice", "Progid", "");
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.webp\UserChoice", "Progid", "");
 							break;
 						case "Disable Access to collections feature":
 							// Code to disable access to collections feature
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main", "CollectionsEnabled", 0);
 							break;
 						case "Disable Shopping Assistant":
 							// Code to disable shopping assistant
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\MicrosoftEdge\ShoppingAssistant", "Enabled", 0);
 							break;
 						case "Don't Show First Run Eperience":
 							// Code to not show first run experience
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main", "HideFirstRunExperience", 1);
 							break;
 						case "Disable Gamer Mode":
 							// Code to disable gamer mode
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Gaming", "GamerModeEnabled", 0);
 							break;
 						case "Disable Copilot Symbol in Edge":
 							// Code to disable copilot symbol in Edge
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main", "CopilotEnabled", 0);
 							break;
 						case "Don't Allow Import of data from other browsers":
 							// Code to not allow import of data from other browsers
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main", "AllowImportFromOtherBrowsers", 0);
 							break;
 						case "Disable Start Boost":
 							// Code to disable start boost
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\MicrosoftEdge\StartBoost", "Enabled", 0);
 							break;
 						case "Don't Show Quick Links in new tabs page":
 							// Code to not show quick links in new tabs page
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\MicrosoftEdge\NewTabPage", "ShowQuickLinks", 0);
 							break;
 						case "Don't Submit user feedback options":
 							// Code to not submit user feedback options
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Feedback", "SubmitFeedbackEnabled", 0);
 							break;
 
 						// Ads
