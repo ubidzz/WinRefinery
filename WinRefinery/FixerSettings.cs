@@ -230,29 +230,29 @@ namespace WinRefinery
 
 						// System
 						case "Show BSOD details instead of sad smiley":
-							// Code to show BSOD details instead of sad smiley
-							OutputLogHandler.AppendMessage($"Show BSOD details instead of sad smiley", Color.Black, false);
+							await EditRegistry.SetItemProperty(@"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Debug", "DisplayDisabled", 0);
 							break;
 						case "Enable Verbose Logon status messages":
-							// Code to enable verbose logon status messages
+							await EditRegistry.SetItemProperty(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", "verbosestatus", 1);
 							break;
 						case "Speed up Shutdown Time":
-							// Code to speed up shutdown time
+							await EditRegistry.SetItemProperty(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management", "ClearPageFileAtShutdown", 1);
+							await EditRegistry.SetItemProperty(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management", "PagingFiles", 0);
 							break;
 						case "Disable Network Throttling":
-							// Code to disable network throttling
+							await EditRegistry.SetItemProperty(@"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Psched", "NonBestEffortLimit", 0);
 							break;
 						case "Optimize System Responsivness":
-							// Code to optimize system responsiveness
+							await EditRegistry.SetItemProperty(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management", "LargeSystemCache", 0);
 							break;
 						case "Speed Up Menu Show Delay":
-							// Code to speed up menu show delay
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\Control Panel\Desktop", "MenuShowDelay", 0);
 							break;
 						case "Enable End Task":
-							// Code to enable end task
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\Control Panel\Desktop", "AutoEndTasks", 1);
 							break;
 						case "Enable Numlock on Logon Screen":
-							// Code to enable numlock on logon screen
+							await EditRegistry.SetItemProperty(@"HKEY_USERS\.DEFAULT\Control Panel\Keyboard", "InitialKeyboardIndicators", 2);
 							break;
 
 						// MS Edge
@@ -380,65 +380,65 @@ namespace WinRefinery
 
 						// UI
 						case "Show Full context menu in Windows 11":
-							// Code to show full context menu in Windows 11
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "FullContextMenu", 1);
 							break;
 						case "Don't use personalized lock screen":
-							// Code to not use personalized lock screen
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "LockScreenPersonalizationEnabled", 0);
 							break;
 						case "Hide search box on taskbar":
-							// Code to hide search box on taskbar
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Search", "SearchBoxTaskbarMode", 0);
 							break;
 						case "Hide Most used apps in start menu":
-							// Code to hide most used apps in start menu
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Explorer", "HideMostUsedApps", 1);
 							break;
 						case "Hide Task view button on taskbar":
-							// Code to hide task view button on taskbar
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "ShowTaskViewButton", 0);
 							break;
 						case "Disable Search box suggestions":
-							// Code to disable search box suggestions
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SearchBoxSuggestionsEnabled", 0);
 							break;
 						case "Pin more Apps on start menu":
-							// Code to pin more apps on start menu
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "Start_PlaceHoldEntries_Max", 20);
 							break;
 						case "Align Start button to left":
-							// Code to align start button to left
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "TaskbarAl", 0);
 							break;
 						case "Disable Transparent Effects":
-							// Code to disable transparent effects
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize", "EnableTransparency", 0);
 							break;
 						case "Enable Dark Mode for Apps":
-							// Code to enable dark mode for apps
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize", "AppsUseLightTheme", 0);
 							break;
 						case "Enable Dark Mode for System":
-							// Code to enable dark mode for system
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize", "SystemUsesLightTheme", 0);
 							break;
 						case "Disable Snap Assist Flyout":
-							// Code to disable snap assist flyout
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "SnapAssistFlyoutEnabled", 0);
 							break;
 
 						// Gaming
 						case "Disable Game DVR":
-							// Code to disable game DVR
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\GameDVR", "AllowGameDVR", 0);
 							break;
 						case "Disable Power Throttling":
-							// Code to disable power throttling
+							await EditRegistry.SetItemProperty(@"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerThrottling", "PowerThrottling", 0);
 							break;
 						case "Disable Visual Effects":
-							// Code to disable visual effects
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects", "VisualFXSetting", 3);
 							break;
 
 						// Privacy
 						case "Disable active history":
-							// Code to disable active history
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync\Groups\windows.web", "Enabled", 0);
 							break;
 						case "Disable location tracking":
-							// Code to disable location tracking
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\Location", "Value", 2);
 							break;
 						case "Disable privacy Settings Experience at sign-in":
-							// Code to disable privacy settings experience at sign-in
+							await EditRegistry.SetItemProperty(@"HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "PrivacySettingsExperienceEnabled", 0);
 							break;
 						case "Turn off Telemetry data collection":
-							// Code to turn off telemetry data collection
+							await EditRegistry.SetItemProperty(@"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection", "AllowTelemetry", 0);
 							break;
 
 						// Extras
