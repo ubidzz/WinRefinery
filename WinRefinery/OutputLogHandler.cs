@@ -10,6 +10,16 @@ namespace WinRefinery
 	{
 		private static WinRefineryGUI _gui;
 
+		public static void Initialize(WinRefineryGUI gui)
+		{
+			_gui = gui;
+		}
+
+		static OutputLogHandler()
+		{
+			_gui = null;
+		}
+
 		public static void AppendMessage(string message, Color color, bool bold)
 		{
 			if (_gui.logOutput == null || _gui.logOutput.IsDisposed || _gui.logOutput.Handle == IntPtr.Zero) return;
@@ -46,12 +56,10 @@ namespace WinRefinery
 
 		public static void DeleteLogsFromWindow()
 		{
-			_gui.logOutput.Clear();
-		}
-
-		internal static void Initialize(WinRefineryGUI winRefineryGUI)
-		{
-			throw new NotImplementedException();
+			if (_gui != null)
+			{
+				_gui.logOutput.Clear();
+			}
 		}
 	}
 }

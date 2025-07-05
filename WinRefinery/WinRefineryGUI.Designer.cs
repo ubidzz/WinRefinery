@@ -264,6 +264,7 @@ namespace WinRefinery
 			btnRun.Visible = false;
 			btnAnalyze.Visible = false;
 
+			//OutputLogHandler.DeleteLogsFromWindow(this);
 			await RestorePoint.StartCreatingTask();
 		}
 
