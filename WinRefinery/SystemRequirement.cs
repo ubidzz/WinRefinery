@@ -24,16 +24,16 @@ namespace WinRefinery
 				if (registryKey != null)
 				{
 					// Check if the operating system is Windows 11
-					string versionString = registryKey.GetValue("DisplayVersion").ToString();
-					if (versionString != null)
+					string currentBuildNumber = registryKey.GetValue("CurrentBuildNumber").ToString();
+					if (currentBuildNumber != null)
 					{
-						if (int.Parse(versionString) >= 22000)
+						if (int.Parse(currentBuildNumber) >= 22000)
 						{
 							// Check if the 24H2 update is installed
-							string buildNumber = registryKey.GetValue("CurrentBuildNumber").ToString();
-							if (buildNumber != null)
+							string displayVersion = registryKey.GetValue("DisplayVersion").ToString();
+							if (displayVersion != null)
 							{
-								if (buildNumber.Contains("24H2"))
+								if (displayVersion.Contains("24H2"))
 								{
 									os = true;
 								}
