@@ -135,12 +135,14 @@ namespace WinRefinery
 			for (int i = 0; i < categories.Length; i++)
 			{
 				// Add a "Select All" checkbox for the current category
-				CheckBox selectAllCheckBox = new CheckBox();
-				selectAllCheckBox.Text = categories[i];
-				selectAllCheckBox.Location = new Point(10, y);
-				selectAllCheckBox.Font = new Font("Arial", 10, FontStyle.Bold);
+				CheckBox selectAllCheckBox = new()
+				{
+					Text = categories[i],
+					Location = new Point(10, y),
+					Font = new Font("Arial", 10, FontStyle.Bold)
+				};
 
-				List<CheckBox> checkBoxes = new List<CheckBox>();
+				List<CheckBox> checkBoxes = [];
 				selectAllCheckBox.CheckedChanged += (sender1, e1) =>
 				{
 					if (selectAllCheckBox.Checked)
@@ -163,9 +165,11 @@ namespace WinRefinery
 
 				WinRefineryGUI.functionPanel.Controls.Add(selectAllCheckBox);
 
-				Label label = new Label();
-				label.Text = categories[i];
-				label.Location = new Point(30, y);
+				Label label = new()
+				{
+					Text = categories[i],
+					Location = new Point(30, y)
+				};
 				WinRefineryGUI.functionPanel.Controls.Add(label);
 
 				y += 20;
@@ -173,19 +177,17 @@ namespace WinRefinery
 				// Add the checkboxes for the current category
 				for (int j = 0; j < checkboxes[i].Length; j++)
 				{
-					CheckBox checkBox = new CheckBox();
-					checkBox.Text = checkboxes[i][j];
-					checkBox.Location = new Point(30, y);
-					checkBox.Width = 250; // Set the width of the checkbox
+					CheckBox checkBox = new()
+					{
+						Text = checkboxes[i][j],
+						Location = new Point(30, y),
+						Width = 250 // Set the width of the checkbox
+					};
 					checkBox.CheckedChanged += (sender1, e1) =>
 					{
 						if (checkBox.Checked)
 						{
 							// Do something when the checkbox is checked
-						}
-						else
-						{
-							// Do something when the checkbox is unchecked
 						}
 					};
 
@@ -196,6 +198,208 @@ namespace WinRefinery
 
 				// Add a blank line to separate the categories
 				y += 10;
+			}
+		}
+
+		public static void RunCheckedFixers(WinRefineryGUI WinRefineryGUI)
+		{
+			// Get the checkboxes from the functionPanel
+			var checkboxes = WinRefineryGUI.functionPanel.Controls.OfType<CheckBox>().ToList();
+
+			// Loop through the checkboxes and check their state
+			foreach (var checkBox in checkboxes)
+			{
+				if (checkBox.Checked)
+				{
+					// Run different code based on the checkbox's text
+					switch (checkBox.Text)
+					{
+						// Issues
+						case "Basic Disk Cleanup":
+							// Code to perform basic disk cleanup
+							break;
+						case "Winget App Updates":
+							// Code to update Winget apps
+							break;
+
+						// System
+						case "Show BSOD details instead of sad smiley":
+							// Code to show BSOD details instead of sad smiley
+							OutputLogHandler.AppendMessage($"Show BSOD details instead of sad smiley", Color.Black, false);
+							break;
+						case "Enable Verbose Logon status messages":
+							// Code to enable verbose logon status messages
+							break;
+						case "Speed up Shutdown Time":
+							// Code to speed up shutdown time
+							break;
+						case "Disable Network Throttling":
+							// Code to disable network throttling
+							break;
+						case "Optimize System Responsivness":
+							// Code to optimize system responsiveness
+							break;
+						case "Speed Up Menu Show Delay":
+							// Code to speed up menu show delay
+							break;
+						case "Enable End Task":
+							// Code to enable end task
+							break;
+						case "Enable Numlock on Logon Screen":
+							// Code to enable numlock on logon screen
+							break;
+
+						// MS Edge
+						case "Disable Browser sign-in and sync services":
+							// Code to disable browser sign-in and sync services
+							break;
+						case "Don't show Sponsored Links in new tabs pages":
+							// Code to not show sponsored links in new tabs pages
+							break;
+						case "Disable Microsoft edge as default browser":
+							// Code to disable Microsoft Edge as default browser
+							break;
+						case "Disable Access to collections feature":
+							// Code to disable access to collections feature
+							break;
+						case "Disable Shopping Assistant":
+							// Code to disable shopping assistant
+							break;
+						case "Don't Show First Run Eperience":
+							// Code to not show first run experience
+							break;
+						case "Disable Gamer Mode":
+							// Code to disable gamer mode
+							break;
+						case "Disable Copilot Symbol in Edge":
+							// Code to disable copilot symbol in Edge
+							break;
+						case "Don't Allow Import of data from other browsers":
+							// Code to not allow import of data from other browsers
+							break;
+						case "Disable Start Boost":
+							// Code to disable start boost
+							break;
+						case "Don't Show Quick Links in new tabs page":
+							// Code to not show quick links in new tabs page
+							break;
+						case "Don't Submit user feedback options":
+							// Code to not submit user feedback options
+							break;
+
+						// Ads
+						case "Disable File Explorer Ads":
+							// Code to disable file explorer ads
+							break;
+						case "Disable Finish Setup Ads":
+							// Code to disable finish setup ads
+							break;
+						case "Disable Lock Screen Tips and Ads":
+							// Code to disable lock screen tips and ads
+							break;
+						case "Disable Personalized Ads":
+							// Code to disable personalized ads
+							break;
+						case "Disable Settings Ads":
+							// Code to disable settings ads
+							break;
+						case "Disable Start Menu Ads":
+							// Code to disable start menu ads
+							break;
+						case "Disable Tailored Experiences":
+							// Code to disable tailored experiences
+							break;
+						case "Disable Gerneral Tips and Ads":
+							// Code to disable general tips and ads
+							break;
+						case "Disable welcome Experience Ads":
+							// Code to disable welcome experience ads
+							break;
+
+						// AI
+						case "Don't Show Copilot in Taskbar":
+							// Code to not show copilot in taskbar
+							break;
+						case "Turn off Recall in Windows 11":
+							// Code to turn off recall in Windows 11
+							break;
+
+						// UI
+						case "Show Full context menu in Windows 11":
+							// Code to show full context menu in Windows 11
+							break;
+						case "Don't use personalized lock screen":
+							// Code to not use personalized lock screen
+							break;
+						case "Hide search box on taskbar":
+							// Code to hide search box on taskbar
+							break;
+						case "Hide Most used apps in start menu":
+							// Code to hide most used apps in start menu
+							break;
+						case "Hide Task view button on taskbar":
+							// Code to hide task view button on taskbar
+							break;
+						case "Disable Search box suggestions":
+							// Code to disable search box suggestions
+							break;
+						case "Pin more Apps on start menu":
+							// Code to pin more apps on start menu
+							break;
+						case "Align Start button to left":
+							// Code to align start button to left
+							break;
+						case "Disable Transparent Effects":
+							// Code to disable transparent effects
+							break;
+						case "Enable Dark Mode for Apps":
+							// Code to enable dark mode for apps
+							break;
+						case "Enable Dark Mode for System":
+							// Code to enable dark mode for system
+							break;
+						case "Disable Snap Assist Flyout":
+							// Code to disable snap assist flyout
+							break;
+
+						// Gaming
+						case "Disable Game DVR":
+							// Code to disable game DVR
+							break;
+						case "Disable Power Throttling":
+							// Code to disable power throttling
+							break;
+						case "Disable Visual Effects":
+							// Code to disable visual effects
+							break;
+
+						// Privacy
+						case "Disable active history":
+							// Code to disable active history
+							break;
+						case "Disable location tracking":
+							// Code to disable location tracking
+							break;
+						case "Disable privacy Settings Experience at sign-in":
+							// Code to disable privacy settings experience at sign-in
+							break;
+						case "Turn off Telemetry data collection":
+							// Code to turn off telemetry data collection
+							break;
+
+						// Extras
+						case "Install the latest Powershell version":
+							// Code to install the latest Powershell version
+							break;
+						case "Install Microsoft PC Manager":
+							// Code to install Microsoft PC Manager
+							break;
+
+						default:
+							// Handle unknown checkbox text
+							break;
+					}
+				}
 			}
 		}
 	}

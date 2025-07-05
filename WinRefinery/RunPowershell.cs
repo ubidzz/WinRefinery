@@ -9,7 +9,7 @@ namespace WinRefinery
 {
 	internal class RunPowershell
 	{
-		public void Script(string script, bool setBool = true)
+		public static void Script(string script, bool setBool = true)
 		{
 			try
 			{
@@ -71,6 +71,70 @@ namespace WinRefinery
 				OutputLogHandler.AppendMessage($"Error executing PowerShell command: {ex.Message}", Color.Red, true);
 				return;
 			}
+		}
+
+		private static void SFC()
+		{
+			OutputLogHandler.AppendMessage("Running sfc /scannow...", Color.Black, false);
+
+			Process process = new Process();
+			process.StartInfo.FileName = "powershell.exe";
+			process.StartInfo.Arguments = "/c sfc /scannow";
+			process.StartInfo.UseShellExecute = false;
+			process.StartInfo.RedirectStandardOutput = true;
+			process.StartInfo.RedirectStandardError = true;
+			process.StartInfo.CreateNoWindow = false;
+
+			process.OutputDataReceived += (sender, data) =>
+			{
+				if (data.Data != null)
+				{
+					//AppendMessage.Invoke((System.Reflection.MethodInvoker)delegate
+					//{
+					OutputLogHandler.AppendMessage(data.Data, Color.Black, false);
+					//});
+				}
+			};
+
+			process.Start();
+			process.BeginOutputReadLine();
+		}
+
+		private static void UpdateWinget()
+		{
+			Process process = new Process();
+			process.StartInfo.FileName = "powershell.exe";
+			process.StartInfo.Arguments = "/c winget update --all";
+			process.StartInfo.UseShellExecute = false;
+			process.StartInfo.RedirectStandardOutput = true;
+			process.StartInfo.RedirectStandardError = true;
+			process.StartInfo.CreateNoWindow = false;
+
+			process.OutputDataReceived += (sender, data) =>
+			{
+				if (data.Data != null)
+				{
+					//AppendMessage.Invoke((MethodInvoker)delegate
+					//{
+					OutputLogHandler.AppendMessage(data.Data, Color.Black, false);
+					//});
+				}
+			};
+
+			process.ErrorDataReceived += (sender, data) =>
+			{
+				if (data.Data != null)
+				{
+					//AppendMessage.Invoke((MethodInvoker)delegate
+					//{
+					OutputLogHandler.AppendMessage(data.Data, Color.Red, true);
+					//});
+				}
+			};
+
+			process.Start();
+			process.BeginOutputReadLine();
+			process.BeginErrorReadLine();
 		}
 	}
 }

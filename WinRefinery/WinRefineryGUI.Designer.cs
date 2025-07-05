@@ -29,7 +29,6 @@ namespace WinRefinery
 				};
 			}
 
-
 			InitializeComponent();
 			OutputLogHandler.Initialize(this);
 			backgroundBanner.MouseDown += GUIAppWindow_MouseDown;
@@ -45,10 +44,12 @@ namespace WinRefinery
 			try
 			{
 				await RestorePoint.StartCreatingTask();
+				OutputLogHandler.AppendMessage("\n", Color.Black, false);
 				switch (btnRun.Text)
 				{
 					case "Run Fixer":
-						//await ExecuteDebloatingOperations();
+						OutputLogHandler.AppendMessage($"Processing the fixer...", Color.Black, false);
+						FixerSettings.RunCheckedFixers(this);
 						break;
 					case "Run App Uninstaller":
 						break;
@@ -79,13 +80,14 @@ namespace WinRefinery
 
 		public async Task ExecuteDebloatingOperations()
 		{
+			/*
 			if (chkRemoveAds.Checked)
 			{
 				OutputLogHandler.AppendMessage("\n", Color.Black,  false);
 				OutputLogHandler.AppendMessage("Removing ads...", Color.Black, true);
 				await Ads.ExecuteRemoveAds();
 			}
-/*
+
 			if (chkDisableTracking.Checked)
 			{
 				OutputLogHandler.AppendMessage("\n", Color.Black,  false);
@@ -152,70 +154,6 @@ namespace WinRefinery
 				OutputLogHandler.AppendMessage($"Error restarting computer: {ex.Message}", Color.Red, true);
 				return;
 			}
-		}
-
-		private void UpdateWinget()
-		{
-			Process process = new Process();
-			process.StartInfo.FileName = "cmd.exe";
-			process.StartInfo.Arguments = "/c winget update --all";
-			process.StartInfo.UseShellExecute = false;
-			process.StartInfo.RedirectStandardOutput = true;
-			process.StartInfo.RedirectStandardError = true;
-			process.StartInfo.CreateNoWindow = true;
-
-			process.OutputDataReceived += (sender, data) =>
-			{
-				if (data.Data != null)
-				{
-					//AppendMessage.Invoke((MethodInvoker)delegate
-					//{
-					OutputLogHandler.AppendMessage(data.Data, Color.Black, false);
-					//});
-				}
-			};
-
-			process.ErrorDataReceived += (sender, data) =>
-			{
-				if (data.Data != null)
-				{
-					//AppendMessage.Invoke((MethodInvoker)delegate
-					//{
-					OutputLogHandler.AppendMessage(data.Data, Color.Red, true);
-					//});
-				}
-			};
-
-			process.Start();
-			process.BeginOutputReadLine();
-			process.BeginErrorReadLine();
-		}
-
-		private void SFC()
-		{
-			OutputLogHandler.AppendMessage("Running sfc /scannow...", Color.Black, false);
-
-			Process process = new Process();
-			process.StartInfo.FileName = "powershell.exe";
-			process.StartInfo.Arguments = "/c sfc /scannow";
-			process.StartInfo.UseShellExecute = false;
-			process.StartInfo.RedirectStandardOutput = true;
-			process.StartInfo.RedirectStandardError = true;
-			process.StartInfo.CreateNoWindow = false;
-
-			process.OutputDataReceived += (sender, data) =>
-			{
-				if (data.Data != null)
-				{
-					//AppendMessage.Invoke((System.Reflection.MethodInvoker)delegate
-					//{
-					OutputLogHandler.AppendMessage(data.Data, Color.Black, false);
-					//});
-				}
-			};
-
-			process.Start();
-			process.BeginOutputReadLine();
 		}
 
 		private void btnFixer_Click(object sender, EventArgs e)

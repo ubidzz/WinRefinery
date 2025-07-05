@@ -14,43 +14,51 @@ namespace WinRefinery
 	{
 		public static bool CheckWindows()
 		{
+			bool os = false;
 
-			// Get the operating system version
 			try
 			{
+				// Check if the operating system is Windows
 				RegistryKey registryKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion");
-				string versionString = registryKey.GetValue("DisplayVersion").ToString();
-				string buildNumber = registryKey.GetValue("CurrentBuildNumber").ToString();
 
-				// Check if the operating system is Windows 11
-				if (int.Parse(buildNumber) >= 22000)
+				if (registryKey != null)
 				{
-					// Check if the 24H2 update is installed
-					if (versionString.Contains("24H2"))
+					// Check if the operating system is Windows 11
+					string versionString = registryKey.GetValue("DisplayVersion").ToString();
+					if (versionString != null)
 					{
-						return true;
+						if (int.Parse(versionString) >= 22000)
+						{
+							// Check if the 24H2 update is installed
+							string buildNumber = registryKey.GetValue("CurrentBuildNumber").ToString();
+							if (buildNumber != null)
+							{
+								if (buildNumber.Contains("24H2"))
+								{
+									os = true;
+								}
+								else
+								{
+									MessageBox.Show(
+										"The 24H2 update is not installed. Please install the 24H2 update before using WinRefinery.",
+										"WinRefinery System Requirement",
+										MessageBoxButtons.OK,
+										MessageBoxIcon.Warning
+									);
+								}
+							}
+						}
+						else
+						{
+							Console.WriteLine("Not Windows 11");
+							MessageBox.Show(
+								"Windows 11 is not installed. Please install the update before using WinRefinery.",
+								"WinRefinery System Requirement",
+								MessageBoxButtons.OK,
+								MessageBoxIcon.Warning
+							);
+						}
 					}
-					else
-					{
-						MessageBox.Show(
-							"The 24H2 update is not installed. Please install the 24H2 update before using WinRefinery.",
-							"WinRefinery System Requirement",
-							MessageBoxButtons.OK,
-							MessageBoxIcon.Warning
-						);
-						return false;
-					}
-				}
-				else
-				{
-					Console.WriteLine("Not Windows 11");
-					MessageBox.Show(
-						"Windows 11 is not installed. Please install the update before using WinRefinery.",
-						"WinRefinery System Requirement",
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Warning
-					);
-					return false;
 				}
 			}
 			catch (Exception ex)
@@ -61,8 +69,9 @@ namespace WinRefinery
 					MessageBoxButtons.OK,
 					MessageBoxIcon.Warning
 				);
-				return false;
 			}
+
+			return os;
 		}
 	}
 }
