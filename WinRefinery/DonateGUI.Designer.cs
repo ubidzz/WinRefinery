@@ -34,7 +34,9 @@
 			textBox1 = new TextBox();
 			textBox3 = new TextBox();
 			btnClose = new Button();
+			paypalLogo = new PictureBox();
 			((System.ComponentModel.ISupportInitialize)qrCode).BeginInit();
+			((System.ComponentModel.ISupportInitialize)paypalLogo).BeginInit();
 			SuspendLayout();
 			// 
 			// qrCode
@@ -42,9 +44,9 @@
 			qrCode.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
 			qrCode.BackgroundImageLayout = ImageLayout.None;
 			qrCode.Image = (Image)resources.GetObject("qrCode.Image");
-			qrCode.Location = new Point(12, 114);
+			qrCode.Location = new Point(12, 233);
 			qrCode.Name = "qrCode";
-			qrCode.Size = new Size(325, 135);
+			qrCode.Size = new Size(325, 137);
 			qrCode.SizeMode = PictureBoxSizeMode.CenterImage;
 			qrCode.TabIndex = 0;
 			qrCode.TabStop = false;
@@ -53,7 +55,7 @@
 			// 
 			btnDonate.FlatStyle = FlatStyle.System;
 			btnDonate.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			btnDonate.Location = new Point(111, 281);
+			btnDonate.Location = new Point(111, 402);
 			btnDonate.Name = "btnDonate";
 			btnDonate.Size = new Size(128, 31);
 			btnDonate.TabIndex = 1;
@@ -63,10 +65,12 @@
 			// 
 			// textBox1
 			// 
-			textBox1.BackColor = SystemColors.ScrollBar;
+			textBox1.BackColor = SystemColors.GradientInactiveCaption;
 			textBox1.BorderStyle = BorderStyle.None;
+			textBox1.Enabled = false;
 			textBox1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			textBox1.Location = new Point(12, 255);
+			textBox1.ForeColor = Color.Black;
+			textBox1.Location = new Point(12, 376);
 			textBox1.Multiline = true;
 			textBox1.Name = "textBox1";
 			textBox1.Size = new Size(325, 20);
@@ -76,8 +80,10 @@
 			// 
 			// textBox3
 			// 
-			textBox3.BackColor = SystemColors.ScrollBar;
+			textBox3.BackColor = SystemColors.GradientInactiveCaption;
 			textBox3.BorderStyle = BorderStyle.None;
+			textBox3.Enabled = false;
+			textBox3.ForeColor = Color.Black;
 			textBox3.Location = new Point(12, 12);
 			textBox3.Multiline = true;
 			textBox3.Name = "textBox3";
@@ -88,7 +94,7 @@
 			// btnClose
 			// 
 			btnClose.FlatStyle = FlatStyle.System;
-			btnClose.Location = new Point(111, 342);
+			btnClose.Location = new Point(111, 458);
 			btnClose.Name = "btnClose";
 			btnClose.Size = new Size(128, 29);
 			btnClose.TabIndex = 5;
@@ -96,12 +102,23 @@
 			btnClose.UseVisualStyleBackColor = true;
 			btnClose.Click += btnClose_Click;
 			// 
+			// paypalLogo
+			// 
+			paypalLogo.Image = (Image)resources.GetObject("paypalLogo.Image");
+			paypalLogo.Location = new Point(12, 114);
+			paypalLogo.Name = "paypalLogo";
+			paypalLogo.Size = new Size(325, 113);
+			paypalLogo.SizeMode = PictureBoxSizeMode.StretchImage;
+			paypalLogo.TabIndex = 6;
+			paypalLogo.TabStop = false;
+			// 
 			// DonateGUI
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			BackColor = SystemColors.ScrollBar;
-			ClientSize = new Size(349, 383);
+			BackColor = SystemColors.GradientInactiveCaption;
+			ClientSize = new Size(349, 499);
+			Controls.Add(paypalLogo);
 			Controls.Add(btnClose);
 			Controls.Add(textBox3);
 			Controls.Add(textBox1);
@@ -116,6 +133,7 @@
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Support WinRefinery";
 			((System.ComponentModel.ISupportInitialize)qrCode).EndInit();
+			((System.ComponentModel.ISupportInitialize)paypalLogo).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -127,5 +145,6 @@
 		private TextBox textBox1;
 		private TextBox textBox3;
 		private Button btnClose;
+		private PictureBox paypalLogo;
 	}
 }

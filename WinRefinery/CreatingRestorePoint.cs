@@ -7,7 +7,7 @@ namespace WinRefinery
 		public EditRegistry EditRegistry = new();
 		public OutputLogHandler OutputLogHandler = new();
 
-		public async Task StartCreatingTask()
+		public static async Task StartCreatingTask()
 		{
 			// Deleting the old logs from the log window
 			OutputLogHandler.DeleteLogsFromWindow();

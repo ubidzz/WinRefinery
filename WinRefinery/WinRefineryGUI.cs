@@ -39,7 +39,6 @@ namespace WinRefinery
 		private Button btnLicense;
 		private Button btnAbout;
 		private Button btnDonation;
-		private AboutInfo aboutInfo;
 
 		private void InitializeComponent()
 		{

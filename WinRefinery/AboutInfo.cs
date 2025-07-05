@@ -9,7 +9,7 @@ namespace WinRefinery
 {
 	internal class AboutInfo
 	{
-		public void License()
+		public static void License()
 		{
 			MessageBox.Show(
 				"Copyright 2025 Jason Turner\n" +
@@ -36,10 +36,36 @@ namespace WinRefinery
 			);
 		}
 
-		public void AboutWinRefinery()
+		public static void AboutWinRefinery()
 		{
+			string version = System.Reflection.Assembly.GetExecutingAssembly()?.GetName()?.Version?.ToString() ?? "Unknown";
+			string message =
+				$"About WinRefinery v{version}\r\n\r\n" +
+				"WinRefinery is your go-to Windows 11 optimization toolkit—designed to empower users of all skill levels to reclaim performance, privacy, and a clean, personalized interface. Whether you’re a seasoned power user or just looking for a smoother, distraction-free experience, WinRefinery gives you the tools to make Windows 11 truly yours.\r\n\r\n" +
+
+				"=== Our Mission ===\r\n" +
+				"To provide a safe, straightforward, and effective way to:\r\n" +
+				"• Eliminate unwanted bloatware\r\n" +
+				"• Tweak and beautify your UI\r\n" +
+				"• Fix common system annoyances\r\n" +
+				"• Protect your privacy\r\n" +
+				"All without compromising system stability.\r\n\r\n" +
+
+				"=== Key Features ===\r\n" +
+				"• One‑Click Debloat – Remove pre-installed apps and services you don’t need.\r\n" +
+				"• UI Customization – Tailor the Start menu, taskbar, window accents, and more.\r\n" +
+				"• System Repairs & Tweaks – Restore features and apply safe performance boosts.\r\n" +
+				"• Privacy Protection – Disable telemetry and background data collection.\r\n" +
+				"• Safe & Reversible Changes – Automatic restore points and undo options.\r\n\r\n" +
+
+				"=== Why Choose WinRefinery? ===\r\n" +
+				"• User-Friendly Interface – Clear, organized sections for quick optimization.\r\n" +
+				"• Lightweight & Fast – No bloat; minimal resource usage.\r\n" +
+				"• Transparent & Secure – No spyware, no hidden activity.\r\n" +
+				"• Actively Developed – Community feedback shapes every update.\r\n";
+
 			MessageBox.Show(
-				" About WinRefinery v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(),
+				message,
 				"About " + Application.ProductName,
 				MessageBoxButtons.OK,
 				MessageBoxIcon.Information

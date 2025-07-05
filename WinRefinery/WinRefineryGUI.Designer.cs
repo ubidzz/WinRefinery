@@ -22,11 +22,14 @@ namespace WinRefinery
 		public Panel functionPanel;
 		public Label appCounter;
 		public RichTextBox logOutput;
+		private Panel backgroundBanner;
+		private TextBox processLogsText;
+		private Panel shadowPanel1;
+		private Panel shadowPanel2;
 
 		public WinRefineryGUI()
 		{
 			InitializeComponent();
-			aboutInfo = new AboutInfo();
 			OutputLogHandler.Initialize(this);
 		}
 
@@ -264,7 +267,6 @@ namespace WinRefinery
 			btnRun.Visible = false;
 			btnAnalyze.Visible = false;
 
-			//OutputLogHandler.DeleteLogsFromWindow(this);
 			await RestorePoint.StartCreatingTask();
 		}
 
@@ -276,16 +278,12 @@ namespace WinRefinery
 
 		private void btnLicense_Click(object sender, EventArgs e)
 		{
-			aboutInfo.License();
+			AboutInfo.License();
 		}
 
 		private void btnAbout_Click(object sender, EventArgs e)
 		{
-			aboutInfo.AboutWinRefinery();
+			AboutInfo.AboutWinRefinery();
 		}
-		private Panel backgroundBanner;
-		private TextBox processLogsText;
-		private Panel shadowPanel1;
-		private Panel shadowPanel2;
 	}
 }
